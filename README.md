@@ -46,12 +46,17 @@ I blasted this region and found a match in Parkin chr:25479-25679
 
 2020-12845 has a T in core.tab
 -looks like a C when mapped to Parkin
--has a T SNP when mapped to Agy99
+-has a C SNP when mapped to Agy99
 
 2020-12844 has a C in core.tab
 -looks like a C when mapped to Parkin
--Has a T SNP when mapped to Agy99
+-Has a C SNP when mapped to Agy99
 
+2015-104 has a T in core.tab
+-Has a C SNP when mapped to Agy99
+
+2018-11426 has a T in core.tab
+-Has a C SNP when mapped to Agy99
 
 
 
