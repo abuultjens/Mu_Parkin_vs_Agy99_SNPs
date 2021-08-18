@@ -38,8 +38,11 @@ Using 478 isolates with the updated epi labels
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8 -d 120 -c 0.8
     
     
+    # here is a SNP region in Agy99 that has no homology in Parkin
+    SNP-25580_Agy99-chr-p_201.fa 
+    GGTAGCCCTGGTCGTAGCCGCCACCCTGGTCGGGGTAGCCCGGGCGCTGCGCCTCAGGGGGTGCCGACGGAGCCGCGGGCGCTGAATAGGCGCCCTCGTCTTGGCGTGCGGGCTCGCGGCCGTATTCGCCGTAGCCCCCGTATCCGGGCTGACCGCCCGGCGGCTGGCCGTAGCCGCCACCCTGGCGGTAACCCTGGTCGT
 
-
+I blasted this region and found a match in Parkin. 
 
 
 
