@@ -42,8 +42,16 @@ Using 478 isolates with the updated epi labels
     SNP-25580_Agy99-chr-p_201.fa 
     GGTAGCCCTGGTCGTAGCCGCCACCCTGGTCGGGGTAGCCCGGGCGCTGCGCCTCAGGGGGTGCCGACGGAGCCGCGGGCGCTGAATAGGCGCCCTCGTCTTGGCGTGCGGGCTCGCGGCCGTATTCGCCGTAGCCCCCGTATCCGGGCTGACCGCCCGGCGGCTGGCCGTAGCCGCCACCCTGGCGGTAACCCTGGTCGT
 
-I blasted this region and found a match in Parkin chr:25479-25679
-2020-12845 has a SNP (T)
+I blasted this region and found a match in Parkin chr:25479-25679  
+
+2020-12845 has a T in core.tab
+-looks like a C when mapped to Parkin
+-has a T SNP when mapped to Agy99
+
+2020-12844 has a C in core.tab
+-looks like a C when mapped to Parkin
+-Has a T SNP when mapped to Agy99
+
 
 
 
