@@ -24,6 +24,20 @@ Using 478 isolates with the updated epi labels
     fa -v 478-Mu_s4.6.0_Parkin-chr-p.noref.aln
     (stdin)                   no=478 bp=136708 ok=136708 Ns=0 gaps=0 min=286 avg=286 max=286 N50=286
     
+### Extracting 100bp up and down of SNP positions
+
+    for TAXA in $(cat $1); do
+        NUMB=100
+        let LOW=${TAXA}-${NUMB}
+        let HIGH=${TAXA}+${NUMB}        
+        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" > Parkin_Agy99_SNPs.fa     
+        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.fa
+    done 
+    
+### clustering of regions with cd-hit-est
+    cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8 -d 120 -c 0.8
+    
+    
 
 
 
