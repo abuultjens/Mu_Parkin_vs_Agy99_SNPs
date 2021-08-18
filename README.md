@@ -58,7 +58,11 @@ I blasted this region and found a match in Parkin chr:25479-25679
 2018-11426 has a T in core.tab  
 -Has a C SNP when mapped to Agy99  
 
+### using samtools tview to check SNPs
 
-
+    for TAXA in $(cat $1); do
+        BASE=`sh ~/shell_scripts/Snippy/cov-checker.sh ../Agy99-chr-p.fa CP000325.1 4564243 ../${TAXA}/snps.bam | tail -2 | head -1 | cut -f 2 -d ' ' | cut -f 2 -d '[' | cut -f 1 -d ']' | cut -f 1 -d ','`
+        echo "${TAXA},${BASE}" >> cov-checker_Agy99-chr-p_4564243.csv
+    done
 
 
