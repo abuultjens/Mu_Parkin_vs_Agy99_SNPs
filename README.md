@@ -30,7 +30,7 @@ Using 478 isolates with the updated epi labels
         NUMB=100
         let LOW=${TAXA}-${NUMB}
         let HIGH=${TAXA}+${NUMB}        
-        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" > Parkin_Agy99_SNPs.fa     
+        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.fa     
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.fa
     done 
     
@@ -61,8 +61,17 @@ I blasted this region and found a match in Parkin chr:25479-25679
 ### using samtools tview to check SNPs
 
     for TAXA in $(cat $1); do
+        # write header line
+        echo "INDEX,POSITION" > cov-checker_Agy99-chr-p_4564243.csv
+        # get base
         BASE=`sh ~/shell_scripts/Snippy/cov-checker.sh ../Agy99-chr-p.fa CP000325.1 4564243 ../${TAXA}/snps.bam | tail -2 | head -1 | cut -f 2 -d ' ' | cut -f 2 -d '[' | cut -f 1 -d ']' | cut -f 1 -d ','`
+        # write body line
         echo "${TAXA},${BASE}" >> cov-checker_Agy99-chr-p_4564243.csv
     done
+
+### Used Excel to determine invariant positions in alignment
+
+### Re-ran clustering of regions with cd-hit-est
+
 
 
