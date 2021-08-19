@@ -38,6 +38,7 @@ Using 478 isolates with the updated epi labels
 
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8 -d 120 -c 0.8
     
+There were many Agy99 singletons and about five Parking singletons    
     
     # here is a SNP region in Agy99 that had no homology in Parkin
     SNP-25580_Agy99-chr-p_201.fa 
@@ -87,5 +88,9 @@ I blasted this region and found a match in Parkin chr:25479-25679
     done 
 
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8.AFTER-COV-CHECK -d 120 -c 0.8
+
+There about five Parkin and Agy99 singletons
+
+The SNP region clustering provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref. It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and then find that they are false SNPs.
 
 
