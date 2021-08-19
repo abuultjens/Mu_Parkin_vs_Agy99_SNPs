@@ -35,6 +35,7 @@ Using 478 isolates with the updated epi labels
     done 
     
 ### clustering of regions with cd-hit-est
+
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8 -d 120 -c 0.8
     
     
@@ -73,5 +74,18 @@ I blasted this region and found a match in Parkin chr:25479-25679
 
 ### Re-ran clustering of regions with cd-hit-est
 
+    for TAXA in $(cat $1); do
+        NUMB=100
+        let LOW=${TAXA}-${NUMB}
+        let HIGH=${TAXA}+${NUMB}        
+        #### PARKIN
+        echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa     
+        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-CO
+        #### AGY99
+        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa
+        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa        
+    done 
+
+    cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8.AFTER-COV-CHECK -d 120 -c 0.8
 
 
