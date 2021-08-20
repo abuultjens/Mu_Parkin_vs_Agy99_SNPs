@@ -30,7 +30,9 @@ Using 478 isolates with the updated epi labels
     fa -v 478-Mu_s4.6.0_Parkin-chr-p.noref.aln
     (stdin)                   no=478 bp=136708 ok=136708 Ns=0 gaps=0 min=286 avg=286 max=286 N50=286
 
-### Extracting regions spanning 100bp up and down of SNP positions
+### Extracting and clustering regions spanning 100bp up and down of SNP positions
+
+In order to compare SNPs between two different references I extracted the regions containing the SNP sites to provide context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp regions. I then used cd-hit-est to cluster the regions at ID cutoff of 0.8.
 
 #### PARKIN
 
@@ -70,7 +72,7 @@ Using 478 isolates with the updated epi labels
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa      
     done 
          
-### clustering SNP regions with cd-hit-est
+#### clustering SNP regions with cd-hit-est
 
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o Parkin_Agy99_SNP-REGIONS_cd-hit-est_c-0.8 -d 120 -c 0.8
     
@@ -81,7 +83,9 @@ Using 478 isolates with the updated epi labels
 2 clusters with three members  
 4 clusters with four members  
 
-### SNP 25580 in Agy99
+My expectation was that majority of clusters should contain one SNP region from both Agy99 and parkin (close to a 1:1 merge of SNPs). There was a surprisingly high number of singleton clusters that had just a single Agy99 SNP region.
+
+### Investigating the Agy99 singleton SNP region clusters: SNP 25580
 
 The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the 230 Agy99 singletons. For this site the Agy99 ref had a T and in the core.tab file 475 isolates had a C and 3 isolates had a T. I manually checked the bam files for the three isolates with the C and three with the T allele, as reported in the core.tab file.
 
