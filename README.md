@@ -77,31 +77,53 @@ Using 478 isolates with the updated epi labels
 
 ### SNP 25580 in Agy99
 
-Ref has a T
-475 isolates have a C
-3 isolates have a T
-
-    # here is a SNP region in Agy99 that had no match in the Parkin SNP regions
-    SNP-25580_Agy99-chr-p_201.fa 
-    GGTAGCCCTGGTCGTAGCCGCCACCCTGGTCGGGGTAGCCCGGGCGCTGCGCCTCAGGGGGTGCCGACGGAGCCGCGGGCGCTGAATAGGCGCCCTCGTCTTGGCGTGCGGGCTCGCGGCCGTATTCGCCGTAGCCCCCGTATCCGGGCTGACCGCCCGGCGGCTGGCCGTAGCCGCCACCCTGGCGGTAACCCTGGTCGT
-
-I blasted this region and found a match in Parkin chr:25479-25679  
+The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the Agy99 singletons. For this site Agy99 has a T and in the core.tab file 475 isolates have a C and 3 isolates have a T. I manually checked the bam files for the three isolates with the C and three with the T allele reported in the core.tab file.
 
 #### 2020-12845 has a T in core.tab  
 -bam file shows a C SNP when mapped to Agy99  
--40x cov for C  
+-40x cov for C    
 
-#### 2020-12844 has a C in core.tab  
--bam file shows a C SNP when mapped to Agy99  
--34x cov for C   
+    grep "25580" 2020-12845/snps.vcf
 
 #### 2015-104 has a T in core.tab  
 -bam file shows a C SNP when mapped to Agy99
 -54x cov for C  
 
+    grep "25580" 2015-104/snps.vcf
+
 #### 2018-11426 has a T in core.tab  
--bam file shows a C SNP when mapped to Agy99
+-bam file shows a C SNP when mapped to Agy99  
 -85x cov for C  
+
+    grep "25580" 2018-11426/snps.vcf
+    
+    grep "25580" 2018-11426/snps.csv
+
+#### 2020-12844 has a C in core.tab  
+-bam file shows a C SNP when mapped to Agy99  
+-34x cov for C
+
+    grep "25580" 2020-12844/snps.vcf
+    CP000325.1      25580   .       T       C       754.801 .       AB=0;AO=29;DP=31;QA=911;QR=0;RO=0;TYPE=snp      GT:DP:RO:QR:AO:QA:GL        1/1:31:0:0:29:911:-81.968,-8.72987,0
+    
+    grep "25580" 2020-12844/snps.csv
+    CP000325.1,25580,snp,T,C,C:29 T:0
+    
+#### 16156690
+
+    grep "25580" 16156690/snps.vcf
+    CP000325.1      25580   .       T       C       2542.76 .       AB=0;AO=97;DP=101;QA=2869;QR=0;RO=0;TYPE=snp    GT:DP:RO:QR:AO:QA:GL       1/1:101:0:0:97:2869:-258.236,-29.1999,0
+    
+    grep "25580" 16156690/snps.csv
+    CP000325.1,25580,snp,T,C,C:97 T:0
+
+#### 17104468
+
+    grep "25580" 17104468/snps.vcf
+    CP000325.1      25580   .       T       C       2232.85 .       AB=0;AO=85;DP=85;QA=2517;QR=0;RO=0;TYPE=snp     GT:DP:RO:QR:AO:QA:GL       1/1:85:0:0:85:2517:-226.748,-25.5876,0
+
+    grep "25580" 17104468/snps.csv
+    CP000325.1,25580,snp,T,C,C:85 T:0
 
 ### using samtools tview to check the consensus base
 
