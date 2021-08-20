@@ -175,13 +175,13 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 17104468/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-### using samtools tview to check the consensus base directly from the bam file
+### Using samtools tview to check the consensus base directly from the bam file
 
 I put the above samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
-#### PARKIN
+#### Parkin
 
     # count number of SNPs in Parkin file
     wc -l 478_Parkin_chr_p_pos.txt 
@@ -196,7 +196,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
         cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa
     done
 
-#### AGY99
+#### Agy99
 
     # count number of SNPs in Agy99 file
     wc -l 478_Agy99_chr_p_pos_AFTER-TVIEW.txt 
@@ -211,7 +211,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa      
     done 
          
-### clustering SNP regions with cd-hit-est
+### Clustering SNP regions with cd-hit-est
 
     cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa   -o Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW_cd-hit-est_c-0.8 -d 120 -c 0.8
     
@@ -226,13 +226,13 @@ The SNP region clustering provides a way to align SNPs from differnet references
 
 ### SNP stats
 
-Agy99 verified SNP alignment (283 SNPs):
-197 were singletons SNPs, the minor allel only occured in a single isolate in the set
-86 had a minor allele that occured in two or more isolates
+Agy99 verified SNP alignment (283 SNPs):  
+197 were singletons SNPs, the minor allel only occured in a single isolate in the set  
+86 had a minor allele that occured in two or more isolates  
 
-Parkin SNP alignment (285 SNPs):
-200 were singletons, the minor allel only occured in a single isolate in the set
-85 had a minor allele that occured in two or more isolates
+Parkin SNP alignment (285 SNPs):  
+200 were singletons, the minor allel only occured in a single isolate in the set  
+85 had a minor allele that occured in two or more isolates  
 
 
 
