@@ -125,7 +125,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     grep "25580" 17104468/snps.csv
     CP000325.1,25580,snp,T,C,C:85 T:0
 
-### using samtools tview to check the consensus base
+### using samtools tview to check the consensus base directly from the bam file
 
     samtools tview -d T 2020-12845/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
