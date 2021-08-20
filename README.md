@@ -84,7 +84,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 **2020-12845 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--40x cov for C    
+-40x cov for C (samtools tview)    
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 2020-12845/snps.vcf
@@ -98,7 +98,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 **2015-104 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--54x cov for C  
+-54x cov for C (samtools tview)  
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 2015-104/snps.vcf
@@ -112,7 +112,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 **2018-11426 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--85x cov for C  
+-85x cov for C (samtools tview)  
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 2018-11426/snps.vcf
@@ -126,7 +126,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 **2020-12844 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--34x cov for C
+-34x cov for C (samtools tview)
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 2020-12844/snps.vcf
@@ -142,7 +142,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     
 **16156690 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--101x cov for C  
+-101x cov for C (samtools tview)  
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 16156690/snps.vcf
@@ -158,7 +158,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 **17104468 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
--85x cov for C  
+-85x cov for C (samtools tview)  
 
     # grepping for site 25580 in snps.vcf
     grep "25580" 17104468/snps.vcf
