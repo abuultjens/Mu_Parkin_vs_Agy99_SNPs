@@ -177,7 +177,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 ### Using samtools tview to check the consensus base directly from the bam file
 
-I ran the same samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant (were flase SNPs), leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
+I ran the same samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant (were false SNPs), leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
@@ -221,17 +221,17 @@ I ran the same samtools tview command in a loop and checked all SNP positions fo
 267 clusters with two members  
 3 clusters with four members  
 
-This SNP region clustering approach provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref (singleton clusters). It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and find out that they were false. After removing the false SNPs specific to Agy99, the majority of SNP regions grouped into clusters with two members, one from each ref (1:1 match between SNPs from each ref), which is what is to be expected for most of the SNPs. 
+This SNP region clustering approach provides a way to align SNPs from different references. Depending on how distant the references are there will be some SNPs that are specific to each ref (singleton clusters). It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and find out that they were false. After removing the false SNPs specific to Agy99, the majority of SNP regions grouped into clusters with two members, one from each ref (1:1 match between SNPs from each ref), which is what is to be expected for most of the SNPs. 
 
 ### SNP stats
 
 **Agy99 verified SNP alignment (283 SNPs):**  
-197 were singletons SNPs, the minor allele only occured in a single isolate in the set  
-86 had a minor allele that occured in two or more isolates  
+197 were singletons SNPs, the minor allele only occurred in a single isolate in the set  
+86 had a minor allele that occurred in two or more isolates  
 
 **Parkin SNP alignment (285 SNPs):**  
-200 were singletons, the minor allele only occured in a single isolate in the set  
-85 had a minor allele that occured in two or more isolates  
+200 were singletons, the minor allele only occurred in a single isolate in the set  
+85 had a minor allele that occurred in two or more isolates  
 
 
 
