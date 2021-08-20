@@ -226,11 +226,11 @@ The SNP region clustering provides a way to align SNPs from differnet references
 
 ### SNP stats
 
-Agy99 verified SNP alignment (283 SNPs):  
+#### Agy99 verified SNP alignment (283 SNPs):  
 197 were singletons SNPs, the minor allel only occured in a single isolate in the set  
 86 had a minor allele that occured in two or more isolates  
 
-Parkin SNP alignment (285 SNPs):  
+#### Parkin SNP alignment (285 SNPs):  
 200 were singletons, the minor allel only occured in a single isolate in the set  
 85 had a minor allele that occured in two or more isolates  
 
