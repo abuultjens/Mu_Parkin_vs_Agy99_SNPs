@@ -1,8 +1,6 @@
 # Mu_Parkin_vs_Agy99_SNPs
 
-Want to show that the SNPs detected when using Parkin are better than AGY99
 
-Using 478 isolates with the updated epi labels
 
 ### WD
 
@@ -13,6 +11,8 @@ Using 478 isolates with the updated epi labels
     /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p
 
 ### SNP counts
+    
+Mapping a set of 478 Mu Victorian isolates with snippv v4.6.0 against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. My expectation was that I should get more SNPs with Parkin as the ref as it is a Vic isolate and Agy99 is around 5,000 SNPs divergent to Vic isolates. The closer related Vic ref should have more potential for SNP sites as more reads from the Vic isolate set should align due to having regions of difference in common compared to Agy99.
     
     # directly from snippy-core
     fa -v 478-Mu_s4.6.0_Agy99-chr-p.aln
@@ -32,7 +32,7 @@ Using 478 isolates with the updated epi labels
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
-In order to compare SNPs between two different references I extracted the regions containing the SNP sites to provide context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp regions. I then used cd-hit-est to cluster the regions at ID cutoff of 0.8.
+I wanted to inspect what SNPs are the same and which are specific to the Agy99 alignment. This was difficult to do as they are different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp per SNP region. I then used cd-hit-est to cluster the regions at ID cutoff of 0.8.
 
 #### PARKIN
 
