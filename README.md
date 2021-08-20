@@ -73,6 +73,8 @@ I blasted this region and found a match in Parkin chr:25479-25679
 
 ### Used Excel to determine invariant positions in alignment
 
+Agy99_chr_p 478 had 283 SNPs
+
 ### Re-ran clustering of regions with cd-hit-est
 
     for TAXA in $(cat $1); do
