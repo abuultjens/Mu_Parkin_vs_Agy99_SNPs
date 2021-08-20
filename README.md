@@ -32,13 +32,17 @@ Using 478 isolates with the updated epi labels
     wc -l 478_Parkin_chr_p_pos.txt 
     285
     
-    # extract parkin SNP regions to file
+    ### extract parkin SNP regions to file
+    # make seq file with chr on single line
+    samtools faidx M_ulcerans_JKD8049.fa
+    samtools faidx M_ulcerans_JKD8049.fa Mulcerans_JKD8049 | grep -v ">" | tr -d '\n' > Mulcerans_JKD8049_1LINE.seq
+    echo "" >> Mulcerans_JKD8049_1LINE.seq
     for TAXA in $(cat 478_Parkin_chr_p_pos.txt); do
         NUMB=100
         let LOW=${TAXA}-${NUMB}
         let HIGH=${TAXA}+${NUMB}         
         echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS.fa    
-        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa
+        cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa
     done
 
 #### AGY99
@@ -47,13 +51,17 @@ Using 478 isolates with the updated epi labels
     wc -l 478_Agy99_chr_p_pos.txt 
     520
     
-    # extract Agy99 SNP regions to file
+    ### extract Agy99 SNP regions to file
+    # make seq file with chr on single line
+    samtools faidx Agy99-chr-p.fa
+    samtools faidx Agy99-chr-p.fa CP000325.1 | grep -v ">" | tr -d '\n' > Agy99-chr-p_1LINE.seq
+    echo "" >> Agy99-chr-p_1LINE.seq
     for TAXA in $(cat 478_Agy99_chr_p_pos.txt); do
         NUMB=100
         let LOW=${TAXA}-${NUMB}
         let HIGH=${TAXA}+${NUMB}          
         echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS.fa
-        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa      
+        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa      
     done 
          
 ### clustering SNP regions with cd-hit-est
@@ -64,7 +72,7 @@ Using 478 isolates with the updated epi labels
 230 Agy99 singletons  
 11 Parkin singletons  
 271 clusters with two members  
-2 clusters with two members  
+2 clusters with three members  
 4 clusters with four members  
 
 ### SNP 25580 in Agy99
@@ -109,21 +117,9 @@ I blasted this region and found a match in Parkin chr:25479-25679
     samtools tview -d T 2018-11426/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C    
 
+I put this command in a loop and checked all SNP positions for all isolates and used Excel to determine the invariant sites. There were 237 sites from the core.tab file that became invariant (due to false SNPs), leaving 283 actual SNPs.
 
-    for TAXA in $(cat $1); do
-        # write header line
-        echo "INDEX,POSITION" > cov-checker_Agy99-chr-p_4564243.csv
-        # get base
-        BASE=`sh ~/shell_scripts/Snippy/cov-checker.sh ../Agy99-chr-p.fa CP000325.1 4564243 ../${TAXA}/snps.bam | tail -2 | head -1 | cut -f 2 -d ' ' | cut -f 2 -d '[' | cut -f 1 -d ']' | cut -f 1 -d ','`
-        # write body line
-        echo "${TAXA},${BASE}" >> cov-checker_Agy99-chr-p_4564243.csv
-    done
-
-### Used Excel to determine invariant positions in alignment
-
-Agy99_chr_p 478 had 283 SNPs
-
-### Extracting 100bp up and down of SNP positions
+### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
 #### PARKIN
 
@@ -165,8 +161,18 @@ Agy99_chr_p 478 had 283 SNPs
 267 clusters with two members  
 3 clusters with four members  
 
-There about five Parkin and Agy99 singletons
-
 The SNP region clustering provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref. It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and then find that they are false SNPs.
+
+
+### stats
+
+Agy99 verified SNP alignment (283 SNPs):
+197 were singletons SNPs, the minor allel only occured in a single isolate in the set
+86 had a minor allele that occured in two or more isolates
+
+Parkin SNP alignment (285 SNPs):
+200 were singletons, the minor allel only occured in a single isolate in the set
+85 had a minor allele that occured in two or more isolates
+
 
 
