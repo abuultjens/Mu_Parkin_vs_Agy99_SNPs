@@ -82,7 +82,7 @@ My expectation was that majority of clusters should contain one SNP region from 
 
 The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the 230 Agy99 singletons. For this site the Agy99 ref had a T and in the core.tab file 475 isolates had a C and 3 isolates had a T. I manually checked the bam files for the three isolates with the C and three with the T allele, as reported in the core.tab file.
 
-**2020-12845 has a T in core.tab**  
+**2020-12845 has a T in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -40x cov for C (samtools tview)    
 
@@ -96,7 +96,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2020-12845/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-**2015-104 has a T in core.tab**  
+**2015-104 has a T in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -54x cov for C (samtools tview)  
 
@@ -110,7 +110,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2015-104/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-**2018-11426 has a T in core.tab**  
+**2018-11426 has a T in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -85x cov for C (samtools tview)  
 
@@ -124,7 +124,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2018-11426/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-**2020-12844 has a C in core.tab**  
+**2020-12844 has a C in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -34x cov for C (samtools tview)
 
@@ -140,7 +140,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2020-12844/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
     
-**16156690 has a C in core.tab**  
+**16156690 has a C in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -101x cov for C (samtools tview)  
 
@@ -156,7 +156,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 16156690/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-**17104468 has a C in core.tab**  
+**17104468 has a C in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -85x cov for C (samtools tview)  
 
