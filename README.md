@@ -15,10 +15,10 @@ I have found 237 false SNPs in snippy and snippy-core files when mapping 478 Vic
 Mapping a set of 478 Mu Victorian isolates with snippv v4.6.0 against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. My expectation was that I should get more SNPs with Parkin as the ref as it is a Vic isolate and Agy99 is around 5,000 SNPs divergent to the Vic Mu population. The closer related Vic ref should have more potential for SNP sites, as more reads from the Vic isolate set should align due to it having regions of difference in common compared to the distant Agy99.
     
     # 478 Mu mapped to Agy99_chr_p 
-    520 SNPs (excluding the ref)
+    520 SNPs (excluding a single SNP on the plasmid)
     
     # 478 Mu mapped to Parkin_chr_p
-    285 SNPs (excluding the ref)
+    285 SNPs (excluding a single SNP on the plasmid)
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
