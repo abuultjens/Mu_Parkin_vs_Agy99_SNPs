@@ -1,8 +1,8 @@
 # Mu_Parkin_vs_Agy99_SNPs
 
+I have found 237 fake SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any fake SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. The tview verified SNP alignments have approximatly the same number of sites, meeting expectations for this pathogen.  
 
-
-### WD
+### WD  
 
     # Agy99_chr_p
     /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p
@@ -34,7 +34,7 @@ Mapping a set of 478 Mu Victorian isolates with snippv v4.6.0 against Agy99_chr_
 
 I wanted to inspect what SNPs are the same and which are specific to the Agy99 alignment. This was difficult to do as they are different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp per SNP region. I then used cd-hit-est to cluster the regions at ID cutoff of 0.8.
 
-#### PARKIN
+#### Parkin
 
     # count number of SNPs in Parkin file
     wc -l 478_Parkin_chr_p_pos.txt 
@@ -53,7 +53,7 @@ I wanted to inspect what SNPs are the same and which are specific to the Agy99 a
         cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa
     done
 
-#### AGY99
+#### Agy99
 
     # count number of SNPs in Agy99 file
     wc -l 478_Agy99_chr_p_pos.txt 
@@ -181,7 +181,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 ### Using samtools tview to check the consensus base directly from the bam file
 
-I put the above samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
+I ran the same samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
