@@ -82,6 +82,9 @@ My expectation was that majority of clusters should contain one SNP region from 
 
 The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the 230 Agy99 singletons. For this site the Agy99 ref had a T and in the core.tab file 475 isolates had a C and 3 isolates had a T. I manually checked the bam files for the three isolates with the C and three with the T allele, as reported in the core.tab file.
 
+    # WD
+    /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p
+
 **2020-12845 has a T in core.tab for site 25580**  
 -bam file shows a C SNP when mapped to Agy99  
 -40x cov for C (samtools tview)    
