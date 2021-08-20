@@ -215,7 +215,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa      
     done 
          
-### Clustering SNP regions with cd-hit-est
+### Clustering tview verified SNP regions with cd-hit-est
 
     cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa   -o Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW_cd-hit-est_c-0.8 -d 120 -c 0.8
     
