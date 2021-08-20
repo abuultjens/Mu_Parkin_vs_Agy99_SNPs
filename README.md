@@ -60,7 +60,12 @@ Using 478 isolates with the updated epi labels
 
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o Parkin_Agy99_SNP-REGIONS_cd-hit-est_c-0.8 -d 120 -c 0.8
     
-There were many Agy99 singletons and about five Parking singletons    
+    518 clusters:
+    230 Agy99 singletons
+    11 Parkin singletons
+    271 clusters with two members
+    2 clusters with two members 
+    4 clusters with four members  
     
     
     
@@ -101,21 +106,47 @@ I blasted this region and found a match in Parkin chr:25479-25679
 
 Agy99_chr_p 478 had 283 SNPs
 
-### Re-ran clustering of regions with cd-hit-est
+### Extracting 100bp up and down of SNP positions
 
-    for TAXA in $(cat $1); do
+#### PARKIN
+
+    # count number of SNPs in Parkin file
+    wc -l 478_Parkin_chr_p_pos.txt 
+    285
+    
+    # extract parkin SNP regions to file
+    for TAXA in $(cat 478_Parkin_chr_p_pos.txt); do
         NUMB=100
         let LOW=${TAXA}-${NUMB}
-        let HIGH=${TAXA}+${NUMB}        
-        #### PARKIN
-        echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa     
-        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-CO
-        #### AGY99
-        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa
-        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa        
-    done 
+        let HIGH=${TAXA}+${NUMB}         
+        echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER.fa    
+        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER.fa
+    done
 
-    cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8.AFTER-COV-CHECK -d 120 -c 0.8
+#### AGY99
+
+    # count number of SNPs in Agy99 file
+    wc -l 478_Agy99_chr_p_pos_AFTER-COV-CHECKER.txt 
+    283
+    
+    # extract Agy99 SNP regions to file
+    for TAXA in $(cat 478_Agy99_chr_p_pos_AFTER-COV-CHECKER.txt); do
+        NUMB=100
+        let LOW=${TAXA}-${NUMB}
+        let HIGH=${TAXA}+${NUMB}          
+        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER.fa
+        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER.fa      
+    done 
+         
+### clustering SNP regions with cd-hit-est
+
+    cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER.fa   -o Parkin_Agy99_SNP-REGIONS_AFTER-COV-CHECKER_cd-hit-est_c-0.8 -d 120 -c 0.8
+    
+    292 clusters:
+    10 Agy99 singletons
+    12 Parkin singletons
+    267 clusters with two members
+    3 clusters with four members
 
 There about five Parkin and Agy99 singletons
 
