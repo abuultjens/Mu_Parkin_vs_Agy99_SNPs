@@ -72,7 +72,7 @@ I wanted to inspect what SNPs are the same and which are specific to the Agy99 a
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa      
     done 
          
-#### clustering SNP regions with cd-hit-est
+#### Clustering SNP regions with cd-hit-est
 
     cd-hit-est -i Parkin_Agy99_SNPs.fa -o Parkin_Agy99_SNP-REGIONS_cd-hit-est_c-0.8 -d 120 -c 0.8
     
