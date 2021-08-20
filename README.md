@@ -130,8 +130,8 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     C
     
 #### 16156690
--bam file shows a C SNP when mapped to Agy99 
--101x cov for C
+-bam file shows a C SNP when mapped to Agy99  
+-101x cov for C  
 
     grep "25580" 16156690/snps.vcf
     CP000325.1      25580   .       T       C       2542.76 .       AB=0;AO=97;DP=101;QA=2869;QR=0;RO=0;TYPE=snp    GT:DP:RO:QR:AO:QA:GL       1/1:101:0:0:97:2869:-258.236,-29.1999,0
@@ -144,8 +144,8 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     C
 
 #### 17104468
--bam file shows a C SNP when mapped to Agy99 
--85x cov for C
+-bam file shows a C SNP when mapped to Agy99  
+-85x cov for C  
 
     grep "25580" 17104468/snps.vcf
     CP000325.1      25580   .       T       C       2232.85 .       AB=0;AO=85;DP=85;QA=2517;QR=0;RO=0;TYPE=snp     GT:DP:RO:QR:AO:QA:GL       1/1:85:0:0:85:2517:-226.748,-25.5876,0
