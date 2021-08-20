@@ -1,6 +1,6 @@
 # Mu_Parkin_vs_Agy99_SNPs
 
-I have found 237 fake SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any fake SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. The tview verified SNP alignments have approximatly the same number of sites, meeting expectations for this pathogen.  
+I have found 237 false SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any false SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. The tview verified SNP alignments have approximatly the same number of sites, meeting expectations for this pathogen.  
 
 ### WD  
 
@@ -174,7 +174,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 ### Using samtools tview to check the consensus base directly from the bam file
 
-I ran the same samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
+I ran the same samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant (were flase SNPs), leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
