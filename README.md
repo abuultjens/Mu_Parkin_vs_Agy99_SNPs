@@ -233,5 +233,18 @@ This SNP region clustering approach provides a way to align SNPs from different 
 200 were singletons, the minor allele only occurred in a single isolate in the set  
 85 had a minor allele that occurred in two or more isolates  
 
+### Agy99 singletons after tview
+
+Agy99 SNP 398430
+
+homologus region in Parkin is: 467346-467146
+
+***2020-12842 has a G in tview-core.tab***  
+
+
+
+***2020-12844 has a A in tview-core.tab***  
+
+
 
 
