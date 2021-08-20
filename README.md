@@ -84,12 +84,24 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 -40x cov for C    
 
     grep "25580" 2020-12845/snps.vcf
+    
+    grep "25580" 2020-12845/snps.csv
+    
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 2020-12845/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
 
 #### 2015-104 has a T in core.tab  
 -bam file shows a C SNP when mapped to Agy99  
 -54x cov for C  
 
     grep "25580" 2015-104/snps.vcf
+    
+    grep "25580" 2015-104/snps.csv
+    
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 2015-104/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
 
 #### 2018-11426 has a T in core.tab  
 -bam file shows a C SNP when mapped to Agy99  
@@ -98,6 +110,10 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     grep "25580" 2018-11426/snps.vcf
     
     grep "25580" 2018-11426/snps.csv
+    
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 2018-11426/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
 
 #### 2020-12844 has a C in core.tab  
 -bam file shows a C SNP when mapped to Agy99  
@@ -109,6 +125,10 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     grep "25580" 2020-12844/snps.csv
     CP000325.1,25580,snp,T,C,C:29 T:0
     
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 2020-12844/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
+    
 #### 16156690
 
     grep "25580" 16156690/snps.vcf
@@ -116,6 +136,10 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     
     grep "25580" 16156690/snps.csv
     CP000325.1,25580,snp,T,C,C:97 T:0
+    
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 16156690/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
 
 #### 17104468
 
@@ -124,11 +148,14 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
     grep "25580" 17104468/snps.csv
     CP000325.1,25580,snp,T,C,C:85 T:0
+    
+    # using samtools tview to check the consensus base directly from the bam file
+    samtools tview -d T 17104468/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+    C
 
 ### using samtools tview to check the consensus base directly from the bam file
 
-    samtools tview -d T 2020-12845/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
-    C
+    
     
     samtools tview -d T 2020-12844/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
