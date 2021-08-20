@@ -86,7 +86,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     grep "25580" 2020-12845/snps.vcf
 
 #### 2015-104 has a T in core.tab  
--bam file shows a C SNP when mapped to Agy99
+-bam file shows a C SNP when mapped to Agy99  
 -54x cov for C  
 
     grep "25580" 2015-104/snps.vcf
