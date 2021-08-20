@@ -14,25 +14,18 @@ I have found 237 fake SNPs in snippy and snippy-core files when mapping 478 Vic 
     
 Mapping a set of 478 Mu Victorian isolates with snippv v4.6.0 against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. My expectation was that I should get more SNPs with Parkin as the ref as it is a Vic isolate and Agy99 is around 5,000 SNPs divergent to Vic isolates. The closer related Vic ref should have more potential for SNP sites as more reads from the Vic isolate set should align due to having regions of difference in common compared to Agy99.
     
-    # directly from snippy-core
-    fa -v 478-Mu_s4.6.0_Agy99-chr-p.aln
-    (stdin)                   no=479 bp=2212980 ok=2212980 Ns=0 gaps=0 min=4620 avg=4620 max=4620 N50=4620
+    # 478 Mu mapped to Agy99_chr_p 
+    520 SNPs (excluding the ref)
     
-    # once the ref had been removed and re-run through snp-sites
-    fa -v 478-Mu_s4.6.0_Agy99-chr-p.noref.aln
-    (stdin)                   no=478 bp=249038 ok=249038 Ns=0 gaps=0 min=521 avg=521 max=521 N50=521
-
-    # directly from snippy-core
-    fa -v 478-Mu_s4.6.0_Parkin-chr-p.aln
-    (stdin)                   no=479 bp=150406 ok=150406 Ns=0 gaps=0 min=314 avg=314 max=314 N50=314
-
-    # once the ref had been removed and re-run through snp-sites
-    fa -v 478-Mu_s4.6.0_Parkin-chr-p.noref.aln
-    (stdin)                   no=478 bp=136708 ok=136708 Ns=0 gaps=0 min=286 avg=286 max=286 N50=286
+    # 478 Mu mapped to Parkin_chr_p
+    285 SNPs (excluding the ref)
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
-I wanted to inspect what SNPs are the same and which are specific to the Agy99 alignment. This was difficult to do as they are different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp per SNP region. I then used cd-hit-est to cluster the regions at ID cutoff of 0.8.
+I wanted to inspect what SNPs are the same and which are specific to the Agy99 alignment. This was difficult to do as they are from different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide flanking context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp per SNP region. I then used cd-hit-est to cluster the SNP regions at ID cutoff of 0.8.
+
+    # WD
+    /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p/Parkin_vs_Agy99
 
 #### Parkin
 
@@ -217,7 +210,7 @@ I ran the same samtools tview command in a loop and checked all SNP positions fo
          
 ### Clustering tview verified SNP regions with cd-hit-est
 
-    cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa   -o Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW_cd-hit-est_c-0.8 -d 120 -c 0.8
+    cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa -o Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW_cd-hit-est_c-0.8 -d 120 -c 0.8
     
 292 clusters:  
 10 Agy99 singletons  
