@@ -139,7 +139,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2018-11426/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C    
 
-I put this command in a loop and checked all SNP positions for all isolates and used Excel to determine the invariant sites. There were 237 sites from the core.tab file that became invariant (due to false SNPs), leaving 283 actual SNPs.
+I put this command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
