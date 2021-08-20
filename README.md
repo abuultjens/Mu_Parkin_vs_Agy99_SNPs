@@ -82,7 +82,7 @@ My expectation was that majority of clusters should contain one SNP region from 
 
 The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the 230 Agy99 singletons. For this site the Agy99 ref had a T and in the core.tab file 475 isolates had a C and 3 isolates had a T. I manually checked the bam files for the three isolates with the C and three with the T allele, as reported in the core.tab file.
 
-#### 2020-12845 has a T in core.tab  
+**2020-12845 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -40x cov for C    
 
@@ -96,7 +96,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2020-12845/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-#### 2015-104 has a T in core.tab  
+**2015-104 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -54x cov for C  
 
@@ -110,7 +110,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2015-104/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-#### 2018-11426 has a T in core.tab  
+**2018-11426 has a T in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -85x cov for C  
 
@@ -124,7 +124,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2018-11426/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-#### 2020-12844 has a C in core.tab  
+**2020-12844 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -34x cov for C
 
@@ -140,7 +140,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 2020-12844/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
     
-#### 16156690
+**16156690 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -101x cov for C  
 
@@ -156,7 +156,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
     samtools tview -d T 16156690/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
     C
 
-#### 17104468
+**17104468 has a C in core.tab**  
 -bam file shows a C SNP when mapped to Agy99  
 -85x cov for C  
 
@@ -212,7 +212,7 @@ I ran the same samtools tview command in a loop and checked all SNP positions fo
 
     cd-hit-est -i Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa -o Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW_cd-hit-est_c-0.8 -d 120 -c 0.8
     
-292 clusters:  
+**292 clusters:**  
 10 Agy99 singletons  
 12 Parkin singletons  
 267 clusters with two members  
@@ -223,11 +223,11 @@ The SNP region clustering provides a way to align SNPs from differnet references
 
 ### SNP stats
 
-#### Agy99 verified SNP alignment (283 SNPs):  
+**Agy99 verified SNP alignment (283 SNPs):**  
 197 were singletons SNPs, the minor allele only occured in a single isolate in the set  
 86 had a minor allele that occured in two or more isolates  
 
-#### Parkin SNP alignment (285 SNPs):  
+**Parkin SNP alignment (285 SNPs):**  
 200 were singletons, the minor allele only occured in a single isolate in the set  
 85 had a minor allele that occured in two or more isolates  
 
