@@ -26,13 +26,38 @@ Using 478 isolates with the updated epi labels
     
 ### Extracting 100bp up and down of SNP positions
 
-    for TAXA in $(cat $1); do
+#### PARKIN
+
+    # count number of SNPs in Parkin file
+    wc -l 478_Parkin_chr_p_pos.txt 
+    285
+    
+    # extract parkin SNP regions to file
+    for TAXA in $(cat 478_Parkin_chr_p_pos.txt); do
         NUMB=100
         let LOW=${TAXA}-${NUMB}
-        let HIGH=${TAXA}+${NUMB}        
-        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.fa     
-        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.fa
+        let HIGH=${TAXA}+${NUMB}         
+        echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa     
+        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-CO
+    done
+
+#### AGY99
+
+    # count number of SNPs in Agy99 file
+    wc -l 478_Agy99_chr_p_pos.txt 
+    520
+    
+    # extract Agy99 SNP regions to file
+    for TAXA in $(cat 478_Agy99_chr_p_pos.txt); do
+        NUMB=100
+        let LOW=${TAXA}-${NUMB}
+        let HIGH=${TAXA}+${NUMB}          
+        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa
+        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNPs.AFTER-COV-CHECK.fa        
     done 
+
+    cd-hit-est -i Parkin_Agy99_SNPs.fa -o out_cd-hit-est_c-0.8.AFTER-COV-CHECK -d 120 -c 0.8
+    
     
 ### clustering of regions with cd-hit-est
 
