@@ -6,25 +6,31 @@ Using 478 isolates with the updated epi labels
 
 ### WD
 
-    # Agy99_chr-p
+    # Agy99_chr_p
     /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p
     
+    # Parkin_chr_p
+    /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p
+
+### SNP counts
+    
+    # directly from snippy-core
     fa -v 478-Mu_s4.6.0_Agy99-chr-p.aln
     (stdin)                   no=479 bp=2212980 ok=2212980 Ns=0 gaps=0 min=4620 avg=4620 max=4620 N50=4620
     
+    # once the ref had been removed and re-run through snp-sites
     fa -v 478-Mu_s4.6.0_Agy99-chr-p.noref.aln
     (stdin)                   no=478 bp=249038 ok=249038 Ns=0 gaps=0 min=521 avg=521 max=521 N50=521
 
-    # Mu_Parkin_2021_chr-p
-    /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p
-
+    # directly from snippy-core
     fa -v 478-Mu_s4.6.0_Parkin-chr-p.aln
     (stdin)                   no=479 bp=150406 ok=150406 Ns=0 gaps=0 min=314 avg=314 max=314 N50=314
 
+    # once the ref had been removed and re-run through snp-sites
     fa -v 478-Mu_s4.6.0_Parkin-chr-p.noref.aln
     (stdin)                   no=478 bp=136708 ok=136708 Ns=0 gaps=0 min=286 avg=286 max=286 N50=286
-    
-### Extracting 100bp up and down of SNP positions
+
+### Extracting regions spanning 100bp up and down of SNP positions
 
 #### PARKIN
 
@@ -77,7 +83,7 @@ Using 478 isolates with the updated epi labels
 
 ### SNP 25580 in Agy99
 
-The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the Agy99 singletons. For this site Agy99 has a T and in the core.tab file 475 isolates have a C and 3 isolates have a T. I manually checked the bam files for the three isolates with the C and three with the T allele reported in the core.tab file.
+The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 bases upstream) did not have a homolog among the Parkin SNP regions at clustering ID of 0.8 and was one of the 230 Agy99 singletons. For this site the Agy99 ref had a T and in the core.tab file 475 isolates had a C and 3 isolates had a T. I manually checked the bam files for the three isolates with the C and three with the T allele, as reported in the core.tab file.
 
 #### 2020-12845 has a T in core.tab  
 -bam file shows a C SNP when mapped to Agy99  
@@ -171,7 +177,7 @@ The 201 bp region containing SNP 25580 in Agy99 (100 bases downstream and 100 ba
 
 ### using samtools tview to check the consensus base directly from the bam file
 
-I put the above samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs.
+I put the above samtools tview command in a loop and checked all SNP positions for all isolates and used Excel to determine that 237 sites became invariant, leaving 283 actual SNPs. I ran the same tview script on the parkin SNP alignment and no sites were found to become invariant.
 
 ### Extracting 100bp up and down of SNP positions from the samtools tview verified Agy99 alignment
 
@@ -187,7 +193,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
         let LOW=${TAXA}-${NUMB}
         let HIGH=${TAXA}+${NUMB}         
         echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa    
-        cut -b ${LOW}-${HIGH} ../../Mu_Parkin_2021_chr-p/Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa
+        cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa
     done
 
 #### AGY99
@@ -202,7 +208,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
         let LOW=${TAXA}-${NUMB}
         let HIGH=${TAXA}+${NUMB}          
         echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa
-        cut -b ${LOW}-${HIGH} ../Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa      
+        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS_AFTER-TVIEW.fa      
     done 
          
 ### clustering SNP regions with cd-hit-est
@@ -218,7 +224,7 @@ I put the above samtools tview command in a loop and checked all SNP positions f
 The SNP region clustering provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref. It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and then find that they are false SNPs.
 
 
-### stats
+### SNP stats
 
 Agy99 verified SNP alignment (283 SNPs):
 197 were singletons SNPs, the minor allel only occured in a single isolate in the set
