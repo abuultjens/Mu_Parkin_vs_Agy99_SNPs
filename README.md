@@ -218,8 +218,7 @@ I ran the same samtools tview command in a loop and checked all SNP positions fo
 267 clusters with two members  
 3 clusters with four members  
 
-The SNP region clustering provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref. It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and then find that they are false SNPs.
-
+This SNP region clustering approach provides a way to align SNPs from differnet references. Depending on how distant the references are there will be some SNPs that are specific to each ref (singleton clusters). It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and find out that they were false. After removing the false SNPs specific to Agy99, the majority of SNP regions grouped into clusters with two members, one from each ref (1:1 match between SNPs from each ref), which is what is to be expected for most of the SNPs. 
 
 ### SNP stats
 
