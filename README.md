@@ -235,16 +235,23 @@ This SNP region clustering approach provides a way to align SNPs from different 
 
 ### Agy99 singletons after tview
 
-Agy99 SNP 398430
+#### Agy99 SNP 398430
+-Agy99 has a G at that site
 
-homologus region in Parkin is: 467346-467146
+#### homologus region in Parkin is: 467346-467146
+-Parkin ref has a T at that site
 
 ***2020-12842 has a G in tview-core.tab***  
-
+-Has a C in Parkin bam file
 
 
 ***2020-12844 has a A in tview-core.tab***  
+-Has a T in Parkin bam file
+-Has a A in Agy99 bam file
 
+***2020-12845 has a A in tview-core.tab***  
+-Has a T in Parkin bam file
+-Has a A in Agy99 bam file
 
 
 
