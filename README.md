@@ -238,20 +238,23 @@ This SNP region clustering approach provides a way to align SNPs from different 
 #### Agy99 SNP 398430  
 -Agy99 has a G at that site  
 
+    >SNP-398430_Agy99-chr-p_201_398330-398530
+ GACCCAGACGCGCCGCACCCCCGAGCACACCCTGGCCGACGTCGTGGGTCGCTTCCAGGCCGCCTGCGCCCGCGTCGAGTTCACCCCGCTCGCCGCGGTCGCCGACCAAGTGGTGGAGGGAATACGAGCCGACCGGTTCTGGATGATGGGCCCGCCCACACCGGCCGATGAGGTGGACACCCGCAAGGCGGCATCGATCGT
+
 #### homologus region in Parkin is: 467346-467146  
 -Parkin ref has a T at that site  
 
 ***2020-12842 has a G in tview-core.tab***  
--Has a C in Parkin bam file  
-
+-Has a C in Parkin bam file (ref: T)  [SEARCH SEQ]
+-Has a X in Agy99 bam file (ref: G)  
 
 ***2020-12844 has a A in tview-core.tab***  
--Has a T in Parkin bam file  
--Has a A in Agy99 bam file  
+-Has a X in Parkin bam file (ref: T)  
+-Has a A in Agy99 bam file (ref: G) SNP  
 
 ***2020-12845 has a A in tview-core.tab***  
--Has a T in Parkin bam file  
--Has a A in Agy99 bam file  
+-Has a X in Parkin bam file (ref: T)   
+-Has a A in Agy99 bam file (ref: G) SNP  
 
 
 
