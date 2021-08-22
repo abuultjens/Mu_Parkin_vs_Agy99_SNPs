@@ -263,6 +263,7 @@ homologus region in Parkin is: 467346-467146
 
 -Has a A in Agy99 bam file (ref: G) SNP  
 399137-399337 (original: 398330-398530)  
+
     # match GACCCAGACGCGCCGCACCCCCGAGCACACCCTGGCCGACGTCGTGGGTCGCTTCCAGGCCGCCTGCGCCCGCGTCGAGTTCACCCCGCTCGCCGCGGTCGCCGACCAAGTGGTGGAGGGAATACGAGCCGACCGGTTCTGGATGATGGGCCCGCCCACACCGGCCGATGAGGTGGACACCCGCAAGGCGGCATCGATCGT
 
 ***2020-12845 has a A in tview-core.tab***  
@@ -274,7 +275,14 @@ homologus region in Parkin is: 467346-467146
 
 -Has a A in Agy99 bam file (ref: G) SNP  
 399017-399217 (original: 398330-398530)  
+
     # match GACCCAGACGCGCCGCACCCCCGAGCACACCCTGGCCGACGTCGTGGGTCGCTTCCAGGCCGCCTGCGCCCGCGTCGAGTTCACCCCGCTCGCCGCGGTCGCCGACCAAGTGGTGGAGGGAATACGAGCCGACCGGTTCTGGATGATGGGCCCGCCCACACCGGCCGATGAGGTGGACACCCGCAAGGCGGCATCGATCGT
     
-    
+#### Running samtools tview on site 398430 for Parkin_chr_p bam files  
+
+All 478 isolates had > 20 cov for that site (T or C). I can't see why the core SNP at this site was not in the Parkin 478_core.tab file?
+
+#### SKA SNP discovery  
+
+Could run SKA with k-60 (the largest possible kmer) and then cluster the 121mers back to the SNP regions from Agy99 and Parkin. I could do this with the 201bp regions or re-run the region extractors using 121bp.
     
