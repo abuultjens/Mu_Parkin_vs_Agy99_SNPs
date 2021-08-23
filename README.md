@@ -285,4 +285,8 @@ All 478 isolates had > 20 cov for that site (T or C). I can't see why the core S
 #### SKA SNP discovery  
 
 Could run SKA with k-60 (the largest possible kmer) and then cluster the 121mers back to the SNP regions from Agy99 and Parkin. I could do this with the 201bp regions or re-run the region extractors using 121bp.
+
+k-60 only gave 1 SNP at 90% core.
+
+
     
