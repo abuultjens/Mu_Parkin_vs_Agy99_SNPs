@@ -293,5 +293,18 @@ Could run SKA with k-60 (the largest possible kmer) and then cluster the 121mers
 
 k-60 only gave 1 SNP at 90% core.
 
+SKA k-15
+
+Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of 31bp per SNP region.
+
+***382 clusters:***  
+102 singletons (99 SKA, 3 Parkin)  
+280 cluster with two members (278 SKA and Parkin pairs, 2 had 2 parkin SNP regions)  
+
+##### Verifying the SKA singleton SNPs
+
+97 had blast hits on the chr. I ran samtools tview and all had SNPs.
+
+79 SNPs were not in masked sections of Parkin_chr.
 
     
