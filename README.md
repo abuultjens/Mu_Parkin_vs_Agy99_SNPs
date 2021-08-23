@@ -307,4 +307,8 @@ Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of
 
 79 SNPs were not in masked sections of Parkin_chr.
 
+70 of the sites had 10x or greater coverage
+
+
+
     
