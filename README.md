@@ -1,6 +1,6 @@
 # Mu_Parkin_vs_Agy99_SNPs
 
-I have found 237 false SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any false SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. The tview verified SNP alignments have approximatly the same number of sites, meeting expectations for this pathogen.  
+I have found 237 false SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any false SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. I found at least 70 false negative SNPs in a snippy-core run with the same 478 isolates when mapped against the Parkin_chr_p ref.
 
 ### WD  
 
