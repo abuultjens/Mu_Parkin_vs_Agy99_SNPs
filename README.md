@@ -223,6 +223,12 @@ I ran the same samtools tview command in a loop and checked all SNP positions fo
 
 This SNP region clustering approach provides a way to align SNPs from different references. Depending on how distant the references are there will be some SNPs that are specific to each ref (singleton clusters). It was the high number of SNPs that were specific to Agy99 (the Agy99 singleton clusters) that alerted me to investigate them and find out that they were false. After removing the false SNPs specific to Agy99, the majority of SNP regions grouped into clusters with two members, one from each ref (1:1 match between SNPs from each ref), which is what is to be expected for most of the SNPs. 
 
+##### Assessing the impact of the false negative Parkin SNPs on model predictions
+
+I ran the Mu lat and long prediction modeling using the original Agy99 snippy core alignment (520 SNPs) and the alignment with only the tview verified SNPs (283 SNPs). The removal of the false SNPs greatly improved the predictions.
+
+![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Agy99_Effect_of_SNP_aln_on_locator_error.png) 
+
 ### SNP stats
 
 **Agy99 verified SNP alignment (283 SNPs):**  
