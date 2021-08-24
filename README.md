@@ -227,6 +227,15 @@ This SNP region clustering approach provides a way to align SNPs from different 
 
 I ran the Mu lat and long prediction modeling using the original Agy99 snippy core alignment (520 SNPs) and the alignment with only the tview verified SNPs (283 SNPs). The removal of the false SNPs greatly improved the predictions.
 
+    # WD
+    /home/buultjensa/locator/478-Mu    
+    
+    # Agy99_snippy-core-TVIEW
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs-TVIEW.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs-TVIEW_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+    
+    # Agy99_snippy-core
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+
 ![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Agy99_Effect_of_SNP_aln_on_locator_error.png) 
 
 ### SNP stats
@@ -321,18 +330,16 @@ I ran the Mu lat and long prediction modeling using the original 478 Parkin snip
 
     # WD
     /home/buultjensa/locator/478-Mu
-    
-    # Agy99_snippy-core-TVIEW
-    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs-TVIEW.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs-TVIEW_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
-    
-    # Agy99_snippy-core
-    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
    
     # Parkin_snippy-core
     python ~/locator/scripts/locator.py --matrix 478_Mu_Parkin.OHE.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Parkin.OHE_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
     
     # Parkin_snippy-core-SKA-TVIEW
     python ~/locator/scripts/locator.py --matrix 478_Mu_Parkin_AND_SKA_SNPs.OHE.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Parkin_AND_SKA_SNPs.OHE_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+
+![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Parkin_Effect_of_SNP_aln_on_locator_error.png) 
+
+##### All SNP alignments:
 
 ![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Effect_of_SNP_aln_on_locator_error.png) 
 
