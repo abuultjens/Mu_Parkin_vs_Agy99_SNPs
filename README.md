@@ -311,7 +311,7 @@ Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of
 
 ##### Do the false negative Parkin SNPs make and difference to the predictions
 
-I ran the Mu lat and long prediction modeling using the original 478 Parkin snippy core alignment (285 SNPs) and an alignment with the 70 false negative SNPs added.
+I ran the Mu lat and long prediction modeling using the original 478 Parkin snippy core alignment (285 SNPs) and an alignment with the 70 false negative SNPs added. The 70 extra SNPs greatly improve the predictions.
 
 ![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Screen%20Shot%202021-08-24%20at%2012.36.10%20pm.png) 
 
