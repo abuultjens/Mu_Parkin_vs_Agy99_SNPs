@@ -313,6 +313,21 @@ Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of
 
 I ran the Mu lat and long prediction modeling using the original 478 Parkin snippy core alignment (285 SNPs) and an alignment with the 70 false negative SNPs added. The 70 extra SNPs greatly improve the predictions.
 
+    # WD
+    /home/buultjensa/locator/478-Mu
+    
+    # Agy99_snippy-core-TVIEW
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs-TVIEW.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs-TVIEW_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+    
+    # Agy99_snippy-core
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Agy99_SNPs.OHE.tr.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Agy99_SNPs_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+   
+    # Parkin_snippy-core
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Parkin.OHE.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Parkin.OHE_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+    
+    # Parkin_snippy-core-SKA-TVIEW
+    python ~/locator/scripts/locator.py --matrix 478_Mu_Parkin_AND_SKA_SNPs.OHE.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Parkin_AND_SKA_SNPs.OHE_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
+
 ![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Screen%20Shot%202021-08-24%20at%2012.36.10%20pm.png) 
 
     
