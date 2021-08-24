@@ -309,6 +309,8 @@ Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of
 
 70 of the sites had 10x or greater coverage
 
+##### Do the false negative Parkin SNPs make and difference to the predictions
+
 
 
     
