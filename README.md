@@ -311,6 +311,6 @@ Re-ran the Parkin SNP regions using 15 bp up and downstream of the SNP, total of
 
 ##### Do the false negative Parkin SNPs make and difference to the predictions
 
-
+![Image description](https://github.com/abuultjens/OoVRE/blob/main/Screen%20Shot%202021-08-18%20at%2010.02.35%20am%20copy.png) 
 
     
