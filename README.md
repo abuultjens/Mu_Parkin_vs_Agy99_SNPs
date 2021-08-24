@@ -328,6 +328,6 @@ I ran the Mu lat and long prediction modeling using the original 478 Parkin snip
     # Parkin_snippy-core-SKA-TVIEW
     python ~/locator/scripts/locator.py --matrix 478_Mu_Parkin_AND_SKA_SNPs.OHE.tab --sample_data 478-Mu_coordinates_2018-2020-PRED.txt --out locator_478_Mu_Parkin_AND_SKA_SNPs.OHE_coordinates_2018-2020-PRED_ACTUAL --min_mac 1
 
-![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Screen%20Shot%202021-08-24%20at%2012.36.10%20pm.png) 
+![Image description](https://github.com/abuultjens/Mu_Parkin_vs_Agy99_SNPs/blob/main/Effect_of_SNP_aln_on_locator_error.png) 
 
     
