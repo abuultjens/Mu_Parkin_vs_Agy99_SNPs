@@ -1,24 +1,65 @@
 # Mu_Parkin_vs_Agy99_SNPs
 
+This is a repo to detail a potential issue I have found with snippy v4.6.0. I have both false positive SNPs (false SNPs that were incorrectly called) and false negative SNPs (true SNPs that were not called).
+
 I have found 237 false SNPs in snippy and snippy-core files when mapping 478 Vic Mu isolates to the Agy99_chr_p ref. I did not find any false SNPs when mapping the same isolate set against the Parkin_chr_p ref. Snippy v4.6.0 was used. I used samtools tview to verify each SNP for each isolate directly from the bam files. I found at least 70 false negative SNPs in a snippy-core run with the same 478 isolates when mapped against the Parkin_chr_p ref.
 
-### WD  
 
-    # Agy99_chr_p
+## False positive SNPs:
+
+Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map them against the Agy99 (African origin) and Parkin (Victorian origin) Mu reference genomes.
+
+### Running snippy
+
+	# fofn of 478 Vic Mu isolates
+	wc -l 478-ORDERED_fofn.txt
+	478 478-ORDERED_fofn.txt
+
+#### Using Agy99 ref  
+
+    # Agy99_chr_p WD
     /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p
     
-    # Parkin_chr_p
+    # snippy command
+    for TAXA in $(cat 478-ORDERED_fofn.txt); do
+    	nice snippy --minfrac 0.8 --outdir ${TAXA} --ref Agy99-chr-p.fa --R1 ${R1} --R2 ${R2}
+    done
+    
+    # make mask bed file
+    snippy-core --ref Agy99-chr-p.fa --mask auto
+    
+    # snippy-core
+    snippy-core --prefix 478-Mu_s4.6.0_Agy99-chr-p --ref Agy99-chr-p.fa --mask Agy99-chr-p.bed $(cat 478-ORDERED_fofn.txt)
+    
+#### Using Parkin ref  
+    
+    # Parkin_chr_p WD
     /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p
+    
+    # snippy command
+    for TAXA in $(cat 478-ORDERED_fofn.txt); do
+    	nice snippy --minfrac 0.8 --outdir ${TAXA} --ref M_ulcerans_JKD8049.fa --R1 ${R1} --R2 ${R2}
+    done
+    
+    # make mask bed file
+    snippy-core --ref M_ulcerans_JKD8049.fa --mask auto
+    
+    # snippy-core
+    snippy-core --prefix 478-Mu_s4.6.0_Parkin-chr-p --ref M_ulcerans_JKD8049.fa --mask M_ulcerans_JKD8049.bed $(cat 478-ORDERED_fofn.txt)    
 
 ### SNP counts
     
-Mapping a set of 478 Mu Victorian isolates with snippv v4.6.0 against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. My expectation was that I should get more SNPs with Parkin as the ref as it is a Vic isolate and Agy99 is around 5,000 SNPs divergent to the Vic Mu population. The closer related Vic ref should have more potential for SNP sites, as more reads from the Vic isolate set should align due to it having regions of difference in common compared to the distant Agy99.
+Mapping against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. The expectation here was that I should get more SNPs with Parkin than Agy99 due to the Parkin analysis having a larger core-genome, as Agy99 is around 5,000 SNPs divergent to the Vic Mu population.
     
     # 478 Mu mapped to Agy99_chr_p 
-    520 SNPs (excluding a single SNP on the plasmid)
+    520 core SNPs (excluding a single SNP on the plasmid)
+    3,816,741 core positions (Agy99_chr_p is 5,805,761 bp)
+    snippy prefix: /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p/478-Mu_s4.6.0_Agy99-chr-p
     
     # 478 Mu mapped to Parkin_chr_p
-    285 SNPs (excluding a single SNP on the plasmid)
+    285 core SNPs (excluding a single SNP on the plasmid)
+    3,849,504 core positions (Parkin_chr_p is 5,801,689 bp)
+    snippy prefix: /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p/478-Mu_s4.6.0_Parkin-chr-p
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
@@ -247,6 +288,8 @@ I ran the Mu lat and long prediction modeling using the original Agy99 snippy co
 **Parkin SNP alignment (285 SNPs):**  
 200 were singletons, the minor allele only occurred in a single isolate in the set  
 85 had a minor allele that occurred in two or more isolates  
+
+## False negative SNPs:
 
 ### Agy99 singletons after tview  
 
