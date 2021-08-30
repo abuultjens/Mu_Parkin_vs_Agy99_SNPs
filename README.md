@@ -18,7 +18,7 @@ Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map
 #### Using Agy99 ref  
 
     # Agy99_chr_p WD
-    /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p
     
     # snippy command
     for TAXA in $(cat 478-ORDERED_fofn.txt); do
@@ -29,12 +29,12 @@ Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map
     snippy-core --ref Agy99-chr-p.fa --mask auto
     
     # snippy-core
-    snippy-core --prefix 478-Mu_s4.6.0_Agy99-chr-p --ref Agy99-chr-p.fa --mask Agy99-chr-p.bed $(cat 478-ORDERED_fofn.txt)
+    snippy-core --prefix 478_Mu_s4.4.5_Agy99_chr_p --ref Agy99-chr-p.fa --mask Agy99-chr-p.bed $(cat 478-ORDERED_fofn.txt)
     
 #### Using Parkin ref  
     
     # Parkin_chr_p WD
-    /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Mu_Parkin_21_chr_p
     
     # snippy command
     for TAXA in $(cat 478-ORDERED_fofn.txt); do
@@ -45,21 +45,19 @@ Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map
     snippy-core --ref M_ulcerans_JKD8049.fa --mask auto
     
     # snippy-core
-    snippy-core --prefix 478-Mu_s4.6.0_Parkin-chr-p --ref M_ulcerans_JKD8049.fa --mask M_ulcerans_JKD8049.bed $(cat 478-ORDERED_fofn.txt)    
+    snippy-core --prefix 478_Mu_s4.4.5_Mu_Parkin_21_chr_p --ref M_ulcerans_JKD8049.fa --mask M_ulcerans_JKD8049.bed $(cat 478-ORDERED_fofn.txt)    
 
 ### SNP counts
     
 Mapping against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_chr_p gave 285 SNPs. The expectation here was that I should get more SNPs with Parkin than Agy99 due to the Parkin analysis having a larger core-genome, as Agy99 is around 5,000 SNPs divergent to the Vic Mu population.
     
     # 478 Mu mapped to Agy99_chr_p 
-    520 core SNPs (excluding a single SNP on the plasmid)
-    3,816,741 core positions (Agy99_chr_p is 5,805,761 bp)
-    snippy prefix: /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p/478-Mu_s4.6.0_Agy99-chr-p
+    430 core SNPs (excluding a single SNP on the plasmid)
+    4,632,803 core positions 79.79% (Agy99_chr_p is 5,805,761 bp)
     
     # 478 Mu mapped to Parkin_chr_p
-    285 core SNPs (excluding a single SNP on the plasmid)
-    3,849,504 core positions (Parkin_chr_p is 5,801,689 bp)
-    snippy prefix: /home/buultjensa/2020_Mu/snippy_v4.6.0/Mu_Parkin_2021_chr-p/478-Mu_s4.6.0_Parkin-chr-p
+    351 core SNPs (excluding a single SNP on the plasmid)
+    4,676,717 core positions 80.60% (Parkin_chr_p is 5,801,689 bp)
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
