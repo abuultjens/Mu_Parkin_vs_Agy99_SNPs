@@ -22,14 +22,23 @@ Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map
     
     # snippy command
     for TAXA in $(cat 478-ORDERED_fofn.txt); do
-    	nice snippy --minfrac 0.8 --outdir ${TAXA} --ref Agy99-chr-p.fa --R1 ${R1} --R2 ${R2}
+    	nice snippy \
+	--minfrac 0.8 \
+	--outdir ${TAXA} \
+	--ref Agy99-chr-p.fa \
+	--R1 ${R1} \
+	--R2 ${R2}
     done
     
     # make mask bed file
     snippy-core --ref Agy99-chr-p.fa --mask auto
     
     # snippy-core
-    snippy-core --prefix 478_Mu_s4.4.5_Agy99_chr_p --ref Agy99-chr-p.fa --mask Agy99-chr-p.bed $(cat 478-ORDERED_fofn.txt)
+    snippy-core \
+    --prefix 478_Mu_s4.4.5_Agy99_chr_p \
+    --ref Agy99-chr-p.fa \
+    --mask Agy99-chr-p.bed \
+    $(cat 478-ORDERED_fofn.txt)
     
 #### Using Parkin ref  
     
@@ -38,14 +47,23 @@ Here I was working with a set of 478 Victorian Mu isolates. I used snippy to map
     
     # snippy command
     for TAXA in $(cat 478-ORDERED_fofn.txt); do
-    	nice snippy --minfrac 0.8 --outdir ${TAXA} --ref M_ulcerans_JKD8049.fa --R1 ${R1} --R2 ${R2}
+    	nice snippy \
+	--minfrac 0.8 \
+	--outdir ${TAXA} \
+	--ref M_ulcerans_JKD8049.fa \
+	--R1 ${R1} 
+	--R2 ${R2}
     done
     
     # make mask bed file
     snippy-core --ref M_ulcerans_JKD8049.fa --mask auto
     
     # snippy-core
-    snippy-core --prefix 478_Mu_s4.4.5_Mu_Parkin_21_chr_p --ref M_ulcerans_JKD8049.fa --mask M_ulcerans_JKD8049.bed $(cat 478-ORDERED_fofn.txt)    
+    snippy-core \
+    --prefix 478_Mu_s4.4.5_Mu_Parkin_21_chr_p \
+    --ref M_ulcerans_JKD8049.fa \
+    --mask M_ulcerans_JKD8049.bed \
+    $(cat 478-ORDERED_fofn.txt)    
 
 ### SNP counts
     
@@ -106,19 +124,50 @@ I wanted to inspect what SNPs are the same between the references and determine 
         echo ">SNP-${POS}_Agy99-chr_15_${LOW}-${HIGH}" >> Agy99_SNP_REGIONS_31.fa
         cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Agy99_SNP_REGIONS_31.fa    
     done 
+    
+#### Running SKA
+
+    # WD
+    /home/buultjensa/2020_Mu/ska/ska_m-0.1_k-15/EVERYTHING
+
+    # running ska on raw reads
+    for TAXA in $(cat 478-ORDERED_fofn.txt); do  
+	    ska fastq -k 15 -a -m 0.1 -o ${TAXA} [R1.gz] [R2.gz]
+    done
+    
+    # aligning ska files
+    ska align -p 0.9 -v -k -o 478_ska_m-0.1_k-15_p-0.9 $(cat 478_ska_fofn.txt)
+    
+    # make plain text feature matrix
+    ska humanise -i 478_Mu_SKA_align_m-0.1_k-15_p-0.9_variants.skf -o 478_Mu_SKA_align_m-0.1_k-15_p-0.9
+    
+    # make fofn of SKA 30kmers
+    tail -n +2 478_Mu_SKA_align_m-0.1_k-15_p-0.9.tsv | cut -f 1 > 478_Mu_SKA_align_m-0.1_k-15_p-0.9_30_mers.txt
+    
+    # make a fasta entry for each SKA 30kmer
+    for KMER in $(cat 478_Mu_SKA_align_m-0.1_k-15_p-0.9_30_mers.txt); do
+    	echo ">${KMER}" >> 478_Mu_SKA_align_m-0.1_k-15_p-0.9_30_mers.fa
+	echo "${KMER}" >> 478_Mu_SKA_align_m-0.1_k-15_p-0.9_30_mers.fa
+    done
          
 #### Clustering SNP regions with cd-hit-est
 
     # WD
     /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p/Agy99_chr_Mu_Parkin_chr
 
-    # combine SNP_region mfa
+    # combine SNP_regions from Parkin and Agy99 as well as SKA 30mers mfa
     cat \
+    /home/buultjensa/2020_Mu/ska/ska_m-0.1_k-15/EVERYTHING/478_Mu_SKA_align_m-0.1_k-15_p-0.9_30_mers.fa \
     /home/buultjensa/2020_Mu/snippy_v4.4.5/Mu_Parkin_21_chr_p/Parkin_SNP_REGIONS_31.fa \
-    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p/Agy99_SNP_REGIONS_31.fa > Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p/Agy99_SNP_REGIONS_31.fa \
+    > 478_ska_m-0.1_k-15_p-0.9_AND_Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa
 
     # run cd-hit-est
-    cd-hit-est -i Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa -o Agy99_chr_AND_Parkin_chr_SNP_REGIONS_cd-hit-est_c-0.95 -d 31 -c 0.95
+    cd-hit-est \
+    -i 478_ska_m-0.1_k-15_p-0.9_AND_Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa \
+    -o 478_ska_m-0.1_k-15_p-0.9_AND_Agy99_chr_AND_Parkin_chr_SNP_REGIONS_cd-hit-est_c-0.95 \
+    -d 31 \
+    -c 0.95
     
 **518 clusters:**  
 230 Agy99 singletons  
