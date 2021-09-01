@@ -61,52 +61,64 @@ Mapping against Agy99_chr_p gave 520 SNPs while mapping the same set to Parkin_c
 
 ### Extracting and clustering regions spanning 100bp up and down of SNP positions
 
-I wanted to inspect what SNPs are the same between the references and determine those that are specific to the Agy99 alignment. This was difficult to do as they are from different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide flanking context for a clustering comparison. Here I took 100 bp up and downstream of the SNP site, totalling 201 bp per SNP region. I then used cd-hit-est to cluster the SNP regions at ID cutoff of 0.8.
-
-    # WD
-    /home/buultjensa/2020_Mu/snippy_v4.6.0/Agy99_chr-p/Parkin_vs_Agy99
+I wanted to inspect what SNPs are the same between the references and determine those that are specific to the Agy99 alignment. This was difficult to do as they are from different references. In order to compare the SNPs between these references I extracted regions containing the SNP sites to provide flanking context for a clustering comparison. Here I took 15 bp up and downstream of the SNP site, totalling 31 bp per SNP region. I then used cd-hit-est to cluster the SNP regions at ID cutoff of 0.95.
 
 #### Parkin
 
+    # WD
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Mu_Parkin_21_chr_p
+
     # count number of SNPs in Parkin file
-    wc -l 478_Parkin_chr_p_pos.txt 
-    285
+    wc -l Mu_Parkin_pos.txt
+    351 Mu_Parkin_pos.txt
     
     ### extract parkin SNP regions to file
     # make seq file with chr on single line
     samtools faidx M_ulcerans_JKD8049.fa
     samtools faidx M_ulcerans_JKD8049.fa Mulcerans_JKD8049 | grep -v ">" | tr -d '\n' > Mulcerans_JKD8049_1LINE.seq
     echo "" >> Mulcerans_JKD8049_1LINE.seq
-    for TAXA in $(cat 478_Parkin_chr_p_pos.txt); do
-        NUMB=100
-        let LOW=${TAXA}-${NUMB}
-        let HIGH=${TAXA}+${NUMB}         
-        echo ">SNP-${TAXA}_Parkin-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS.fa    
-        cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa
+    for POS in $(cat Mu_Parkin_pos.txt); do
+        NUMB=15
+        let LOW=${POS}-${NUMB}
+        let HIGH=${POS}+${NUMB}         
+        echo ">SNP-${POS}_Parkin-chr_${LOW}-${HIGH}" >> Parkin_SNP_REGIONS_31.fa   
+        cut -b ${LOW}-${HIGH} Mulcerans_JKD8049_1LINE.seq >> Parkin_SNP_REGIONS_31.fa
     done
 
 #### Agy99
 
+    # WD
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p
+
     # count number of SNPs in Agy99 file
-    wc -l 478_Agy99_chr_p_pos.txt 
-    520
+    wc -l Agy99_pos.txt
+    430 Agy99_pos.txt
     
     ### extract Agy99 SNP regions to file
     # make seq file with chr on single line
     samtools faidx Agy99-chr-p.fa
     samtools faidx Agy99-chr-p.fa CP000325.1 | grep -v ">" | tr -d '\n' > Agy99-chr-p_1LINE.seq
     echo "" >> Agy99-chr-p_1LINE.seq
-    for TAXA in $(cat 478_Agy99_chr_p_pos.txt); do
-        NUMB=100
-        let LOW=${TAXA}-${NUMB}
-        let HIGH=${TAXA}+${NUMB}          
-        echo ">SNP-${TAXA}_Agy99-chr-p_201_${LOW}-${HIGH}" >> Parkin_Agy99_SNP-REGIONS.fa
-        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Parkin_Agy99_SNP-REGIONS.fa      
+    for POS in $(cat Agy99_pos.txt); do
+        NUMB=15
+        let LOW=${POS}-${NUMB}
+        let HIGH=${POS}+${NUMB}          
+        echo ">SNP-${POS}_Agy99-chr_15_${LOW}-${HIGH}" >> Agy99_SNP_REGIONS_31.fa
+        cut -b ${LOW}-${HIGH} Agy99-chr-p_1LINE.seq >> Agy99_SNP_REGIONS_31.fa    
     done 
          
 #### Clustering SNP regions with cd-hit-est
 
-    cd-hit-est -i Parkin_Agy99_SNPs.fa -o Parkin_Agy99_SNP-REGIONS_cd-hit-est_c-0.8 -d 120 -c 0.8
+    # WD
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p/Agy99_chr_Mu_Parkin_chr
+
+    # combine SNP_region mfa
+    cat \
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Mu_Parkin_21_chr_p/Parkin_SNP_REGIONS_31.fa \
+    /home/buultjensa/2020_Mu/snippy_v4.4.5/Agy99_chr_p/Agy99_SNP_REGIONS_31.fa > Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa
+
+    # run cd-hit-est
+    cd-hit-est -i Agy99_chr_AND_Parkin_chr_SNP_REGIONS_31.fa -o Agy99_chr_AND_Parkin_chr_SNP_REGIONS_cd-hit-est_c-0.95 -d 31 -c 0.95
     
 **518 clusters:**  
 230 Agy99 singletons  
