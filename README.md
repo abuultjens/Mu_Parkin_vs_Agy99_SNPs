@@ -169,14 +169,91 @@ I wanted to inspect what SNPs are the same between the references and determine 
     -d 31 \
     -c 0.95
     
-**518 clusters:**  
-230 Agy99 singletons  
-11 Parkin singletons  
-271 clusters with two members  
-2 clusters with three members  
-4 clusters with four members  
+**474 clusters:**  
+80 singleton clusters with 1 Agy99 SNP region  
+1 singleton  cluster with 1 Parkin SNP region  
+41 singletons with 1 SKA kmer  
+2 clusters with 1 SKA kmer and 1 Agy99 SNP region  
+8 clusters with 1 SKA kmer and 1 Parkin SNP region  
+12 clusters with 1 Agy99 SNP region and 1 Parkin SNP region  
+325 clusters with 1 SKA kmer, 1 Agy99 SNP region and 1 Parkin SNP region
 
-My expectation was that majority of clusters should contain one SNP region from both Agy99 and parkin (close to a 1:1 merge of SNPs). There was a surprisingly high number of singleton clusters that had just a single Agy99 SNP region.
+There was a unexpectedly large number of Agy99 singleton clusters.  
+
+My expectation was that majority of clusters should contain one SNP region from both Agy99 and parkin (close to a 1:1 merge of SNPs). There was a surprisingly high number of singleton clusters that had just a single Agy99 SNP region.  
+
+#### Running samtools tview to verify Agy99 singleton SNPs  
+
+	# run samtools tview in a loop
+    for POS in $(cat Agy99_singltons.txt); do
+        for TAXA in $(cat 478-ORDERED_fofn.txt); do
+            samtools tview -d T ${TAXA}/snps.bam Agy99-chr-p.fa -p CP000325.1:25580 | cut -b 1 | head -3 | tail -1
+        done
+    done
+
+### Agy99 FP SNPs:  
+74 sites from the Agy99 alignment were found to have no SNP among the 478 isolates. These sites had a minimum coverage of 10x or greater in any isolate.  
+
+### Agy99 FN SNPs:  
+There are 5 Agy99 SNPs that look real that were not called by snippy  
+
+#### Parkin  
+
+### Parkin FP SNPs:  
+There were 0  
+
+### Parkin FN SNPs:  
+There are 5 Parkin SNPs that look real that were not called by snippy  
+
+
+########## running s4.4.5 on 288 Lpn  
+
+    # snippy4.4.5
+    wc -l Lpm7613_pos.txt 
+    180,114 Lpm7613_pos.txt
+
+    # SKA
+    wc -l 288_Lpn_SKA_align_m-0.1_k-15_p-0.9_KMERS.txt 
+    64,154 288_Lpn_SKA_align_m-0.1_k-15_p-0.9_KMERS.txt
+
+**cd-hit-est**  
+172,845 clusters  
+105,631 singleton clusters  
+99,239 snippy singleton clusters  
+6,392 SKA singleton clusters  
+
+### Lpn FP SNPs:  
+I screened 41,500 of the 99,239 snippy singletons.  
+There were 84 sites that became invariant.  
+41500_289_fofn.txt  
+
+### Lpn FN SNPs:  
+Screened 1,760 of the 6,392 SKA singleton clusters. Found 34 SNPs that were not called.  
+Lpn_singleton_6076_pos.txt  
+Lpn_292_singletons_not-masked.txt  
+288_Lpn_FN.csv  
+
+********* check to see where the FP and FN SNPs are located on the chrs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Investigating the Agy99 singleton SNP region clusters: SNP 25580
 
